@@ -48,10 +48,9 @@ INSTALLED_APPS = [
     'allauth.account',  # 追加
     'allauth.socialaccount',  # 追加
     'django.contrib.sites',
+    'drf_yasg',
 
-    # 'drf_yasg',
-
-    'rest_framework_swagger',
+    # 'rest_framework_swagger',
 
     'rest_auths.apps.RestAuthsConfig',
 ]
@@ -120,9 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -171,13 +170,24 @@ EMAIL_USE_TLS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # メールではなくコンソールに
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' #メール送信
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/api/v1/registration/verify-email/'
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/admin'
 SITE_ID = 1
-URL_FRONT = 'http://localhost:8000/'
+
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None    # Userモデルにusernameは無い
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 # ACCOUNT_ADAPTER = 'API.adapter.DefaultAccountAdapterCustom'
-USER_DETAILS_SERIALIZER = 'UserSerializer'
+
+# シリアライズをデフォルトのものから変更
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'rest_auths.serializers.UserSerializer'
+}
+
+
+# SWAGGER_SETTINGS = {
+
+#     'VALIDATOR_URL': 'http://localhost:8000',
+
+# }
