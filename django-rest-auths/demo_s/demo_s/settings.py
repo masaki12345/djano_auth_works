@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  # 追加
     'django.contrib.sites',
 
+    # 'drf_yasg',
 
+    'rest_framework_swagger',
 
     'rest_auths.apps.RestAuthsConfig',
 ]
@@ -143,6 +145,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+
     )
 }
 
@@ -151,7 +154,7 @@ REST_SESSION_LOGIN = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'username'
+# ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 
 
@@ -170,10 +173,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # メールで
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' #メール送信
 LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/api/v1/registration/verify-email/'
 SITE_ID = 1
-ACCOUNT_ADAPTER = 'API.adapter.DefaultAccountAdapterCustom'
 URL_FRONT = 'http://localhost:8000/'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None    # Userモデルにusernameは無い
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_ADAPTER = 'API.adapter.DefaultAccountAdapterCustom'
+USER_DETAILS_SERIALIZER = 'UserSerializer'
