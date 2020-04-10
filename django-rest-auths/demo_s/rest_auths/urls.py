@@ -10,12 +10,14 @@ from rest_auth.views import (
     LoginView, LogoutView, UserDetailsView, PasswordChangeView,
     PasswordResetView, PasswordResetConfirmView
 )
-
-
+from django.views.generic import TemplateView
+# app_name = 'rest_framework'
 urlpatterns = [
-    path('rest-auth/', include('rest_auth.urls')),
+    path('', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls'),),  # 追加
     path('account/', include('allauth.urls')),
     path('^password/change/$', PasswordChangeView.as_view(),
          name='rest_password_change',),
+
+
 ]

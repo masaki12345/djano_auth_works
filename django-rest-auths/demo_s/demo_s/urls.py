@@ -10,7 +10,6 @@ from drf_yasg import openapi
 # app_name = 'rest_framework'
 
 
-
 schema_view = get_schema_view(
     openapi.Info(
         title="Snippets API",

@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'drf_yasg',
 
-    # 'rest_framework_swagger',
-
     'rest_auths.apps.RestAuthsConfig',
 ]
 
@@ -137,8 +135,8 @@ STATIC_URL = '/static/'
 
 
 # 認証ありのAPIもSwaggerUIから使えるように、`LOGIN_URL`とか`DEFAULT_AUTHENTICATION_CLASSES`を設定
-LOGIN_URL = 'rest_framework:login'
-LOGOUT_URL = 'rest_framework:logout'
+# LOGIN_URL = 'rest_framework:login'
+# LOGOUT_URL = 'rest_framework:logout'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -169,13 +167,13 @@ EMAIL_USE_TLS = True
 """メール設定"""
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # メールではなくコンソールに
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' #メール送信
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # メール送信
 LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/admin'
 SITE_ID = 1
 
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None    # Userモデルにusernameは無い
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None    # usernameフィールドの有無
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 # ACCOUNT_ADAPTER = 'API.adapter.DefaultAccountAdapterCustom'
