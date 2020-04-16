@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import User
+from ..models import User
 from rest_framework import viewsets
 
 
-from .serializers import UserSerializer
+from ..serializers.user import UserSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):

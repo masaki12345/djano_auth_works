@@ -1,0 +1,15 @@
+{% load account %}
+{% user_display user as user_display %}
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+
+
+下記のリンクをタップすれば登録完了となります
+{{ activate_url }}
+
+このメールの内容に身に覚えがない場合は本メールを無視するか、削除してください。
+
+宜しくお願いいたします。
+{% endblocktrans %}
+{% endautoescape %}
