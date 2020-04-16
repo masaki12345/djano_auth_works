@@ -52,6 +52,10 @@ INSTALLED_APPS = [
 
     'rest_auths.apps.RestAuthsConfig',
 ]
+AUTHENTICATION_BACKENDS = [
+
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,7 +131,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
@@ -180,7 +185,9 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 # シリアライズをデフォルトのものから変更
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'rest_auths.serializers.UserSerializer'
+    'USER_DETAILS_SERIALIZER': 'rest_auths.serializers.user.UserSerializer',
+    'PASSWORD_RESET_SERIALIZER': 'rest_auths.serializers.password_custom.CustomPasswordResetSerializer',
+
 }
 
 
@@ -189,3 +196,8 @@ REST_AUTH_SERIALIZERS = {
 #     'VALIDATOR_URL': 'http://localhost:8000',
 
 # }
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'  # メールではなくファイルとして出力
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # メールではなくコンソールに
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # メール送信
+
+EMAIL_FILE_PATH = 'rest_auths/sss'  # ファイルのパス
